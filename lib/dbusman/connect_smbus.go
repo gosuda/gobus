@@ -12,6 +12,7 @@ type Units []struct {
 	SubState    string
 }
 
+// Connect to System Bus
 func ConnectDBus() (*dbus.Conn, error) {
 	conn, err := dbus.SystemBus()
 	if err != nil {
@@ -20,8 +21,4 @@ func ConnectDBus() (*dbus.Conn, error) {
 	return conn, err
 }
 
-func GetSystemd(conn *dbus.Conn) *Systemd {
-	daemon := new(Systemd)
-	daemon.bus = conn.Object("org.freedesktop.systemd1", "/org/freedesktop/systemd1")
-	return daemon
-}
+

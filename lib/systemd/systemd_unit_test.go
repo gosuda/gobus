@@ -1,27 +1,28 @@
-package dbusman
+package systemd
 
 import (
 	"os"
+	"github.com/gosuda/gobus/lib/dbusman"
 	"testing"
 )
 
 func TestDBusSystemdFunctions(t *testing.T) {
-	conn, err := ConnectDBus()
+	conn, err := dbusman.ConnectDBus()
 	if err != nil {
 		t.Fatalf("Failed to connect to DBus: %v", err)
 	}
-	sysd := GetSystemd(conn)
+	sysd := dbusman.GetSystemd(conn)
 
-	// 1. Test GetUnits - expect at least one unit returned
-	units := sysd.GetUnits()
+	// 1. Test ListUnits - expect at least one unit returned
+	units := sysd.ListUnits()
 	if len(units) == 0 {
 		t.Fatal("Expected at least one unit from GetUnits()")
-	}
+	
 	t.Logf("GetUnits returned %d units", len(units))
 
-	// 2. Test GetUnitsByNames with existing service names
+	// 2. Test ListUnitsByNames with existing service names
 	names := []string{"systemd-journald.service", "dbus.service"}
-	unitsByName := sysd.GetUnitsByNames(names)
+	unitsByName := sysd.ListUnitsByNames(names)
 	if len(unitsByName) != len(names) {
 		t.Fatalf("Expected %d units from GetUnitsByNames(), got %d", len(names), len(unitsByName))
 	}

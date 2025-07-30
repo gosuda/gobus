@@ -1,4 +1,4 @@
-package dbusman
+package systemd
 
 import (
 	"os"
@@ -6,13 +6,16 @@ import (
 	"github.com/godbus/dbus"
 )
 
-func (sysd *Systemd) GetUnits() []Unit {
+
+// Get All Units
+func (sysd *Systemd) ListUnits() []Unit {
 	var units []Unit
 	sysd.bus.Call("org.freedesktop.systemd1.Manager.ListUnits", 0).Store(&units)
 	return units
 }
 
-func (sysd *Systemd) GetUnitsByNames(names []string) []Unit {
+// List units in a range of specified names
+func (sysd *Systemd) ListUnitsByNames(names []string) []Unit {
 	var units []Unit
 	sysd.bus.Call("org.freedesktop.systemd1.Manager.ListUnitsByNames", 0, names).Store(&units)
 	return units
