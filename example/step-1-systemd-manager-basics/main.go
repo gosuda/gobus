@@ -3,8 +3,8 @@ package main
 import (
 	"fmt"
 	"log"
-
 	"github.com/gosuda/gobus/lib/dbusman"
+	"github.com/gosuda/gobus/lib/systemd"
 )
 
 func main() {
@@ -15,7 +15,7 @@ func main() {
 	}
 
 	// Create a systemd manager instance
-	sysd := dbusman.GetSystemd(conn)
+	sysd := systemd.GetSystemd(conn)
 
 	// Fetch all units
 	units := sysd.ListUnits()
