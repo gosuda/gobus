@@ -3,7 +3,7 @@ import (
 	"os"
 	_ "github.com/gosuda/gobus/lib/dbusman"
 	"github.com/godbus/dbus"
-	process "github.com/gosuda/gobus/lib/dbusman/process"
+	process "github.com/gosuda/gobus/lib/systemd/process"
 )
 
 type SystemdUnitGetters interface {
