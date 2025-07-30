@@ -2,8 +2,9 @@ package systemd
 
 import (
 	"os"
-	"github.com/gosuda/gobus/lib/dbusman"
 	"testing"
+
+	"github.com/gosuda/gobus/lib/dbusman"
 )
 
 func TestDBusSystemdFunctions(t *testing.T) {
@@ -11,14 +12,15 @@ func TestDBusSystemdFunctions(t *testing.T) {
 	if err != nil {
 		t.Fatalf("Failed to connect to DBus: %v", err)
 	}
-	sysd := dbusman.GetSystemd(conn)
+	sysd := GetSystemd(conn)
 
 	// 1. Test ListUnits - expect at least one unit returned
 	units := sysd.ListUnits()
 	if len(units) == 0 {
 		t.Fatal("Expected at least one unit from GetUnits()")
-	
-	t.Logf("GetUnits returned %d units", len(units))
+
+		t.Logf("GetUnits returned %d units", len(units))
+	}
 
 	// 2. Test ListUnitsByNames with existing service names
 	names := []string{"systemd-journald.service", "dbus.service"}
