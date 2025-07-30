@@ -2,8 +2,8 @@ package systemd
 
 import (
 	"os"
-
 	"github.com/godbus/dbus"
+	"github.com/gosuda/gobus/lib/systemd/process"
 )
 
 
@@ -61,8 +61,8 @@ func (sysd *Systemd) GetUnitFileState(file string) string {
 	return state
 }
 
-func (sysd *Systemd) GetUnitProcesses(name string) []Process {
-	var processes []Process
+func (sysd *Systemd) GetUnitProcesses(name string) []process.Process {
+	var processes []process.Process
 	sysd.bus.Call("org.freedesktop.systemd1.Manager.GetUnitProcesses", 0, name).Store(&processes)
 	return processes
 }
