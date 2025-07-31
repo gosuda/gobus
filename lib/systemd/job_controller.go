@@ -6,6 +6,7 @@ import (
 )
 
 type SystemdJobController interface {
+	// this should contain systemd job related methods
 	CancelJob(uint32)
 	ClearJobs()
 	EnqueueUnitJob(string, string, string) (job.Job, []job.Job)
