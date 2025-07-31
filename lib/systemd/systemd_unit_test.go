@@ -4,11 +4,11 @@ import (
 	"os"
 	"testing"
 
-	"github.com/gosuda/gobus/lib/dbusman"
+	"github.com/gosuda/gobus/lib/dbus"
 )
 
 func TestDBusSystemdFunctions(t *testing.T) {
-	conn, err := dbusman.ConnectDBus()
+	conn, err := dbus.ConnectSystemBus()
 	if err != nil {
 		t.Fatalf("Failed to connect to DBus: %v", err)
 	}

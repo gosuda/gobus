@@ -3,13 +3,14 @@ package main
 import (
 	"fmt"
 	"log"
-	"github.com/gosuda/gobus/lib/dbusman"
+
+	"github.com/gosuda/gobus/lib/dbus"
 	"github.com/gosuda/gobus/lib/systemd"
 )
 
 func main() {
 	// Connect to the system bus
-	conn, err := dbusman.ConnectDBus()
+	conn, err := dbus.ConnectSystemBus()
 	if err != nil {
 		log.Fatalf("Failed to connect to system bus: %v", err)
 	}
@@ -45,4 +46,3 @@ func main() {
 		fmt.Printf("PID: %d, Command: %s, Cgroup: %s\n", p.GetPid(), p.GetCommand(), p.GetCgroup())
 	}
 }
-

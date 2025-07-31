@@ -1,19 +1,20 @@
 package systemd
+
 import (
 	"os"
-	_ "github.com/gosuda/gobus/lib/dbusman"
-	"github.com/godbus/dbus"
+
+	d "github.com/godbus/dbus"
 	process "github.com/gosuda/gobus/lib/systemd/process"
 )
 
 type SystemdUnitGetters interface {
 	// Functions should follow FreeDesktop functions' original names.
 	// These funtions are unit getters
-	GetUnit(string) dbus.ObjectPath
-	GetUnitByControlGroup(string) dbus.ObjectPath
-	GetUnitByInvocationID([]byte) dbus.ObjectPath
-	GetUnitByPID(uint32) dbus.ObjectPath
-	GetUnitByPIDFD(*os.File) dbus.ObjectPath
+	GetUnit(string) d.ObjectPath
+	GetUnitByControlGroup(string) d.ObjectPath
+	GetUnitByInvocationID([]byte) d.ObjectPath
+	GetUnitByPID(uint32) d.ObjectPath
+	GetUnitByPIDFD(*os.File) d.ObjectPath
 	GetUnitFileLinks(string, bool) []string
 	GetUnitFileState(string) string
 	GetUnitProcesses(string) []process.Process

@@ -2,50 +2,51 @@ package systemd
 
 import (
 	"os"
-	"github.com/godbus/dbus"
+
+	d "github.com/godbus/dbus"
 	"github.com/gosuda/gobus/lib/systemd/process"
+	"github.com/gosuda/gobus/lib/systemd/unit"
 )
 
-
 // Get All Units
-func (sysd *Systemd) ListUnits() []Unit {
-	var units []Unit
+func (sysd *Systemd) ListUnits() []unit.Unit {
+	var units []unit.Unit
 	sysd.bus.Call("org.freedesktop.systemd1.Manager.ListUnits", 0).Store(&units)
 	return units
 }
 
 // List units in a range of specified names
-func (sysd *Systemd) ListUnitsByNames(names []string) []Unit {
-	var units []Unit
+func (sysd *Systemd) ListUnitsByNames(names []string) []unit.Unit {
+	var units []unit.Unit
 	sysd.bus.Call("org.freedesktop.systemd1.Manager.ListUnitsByNames", 0, names).Store(&units)
 	return units
 }
-func (sysd *Systemd) GetUnit(name string) dbus.ObjectPath {
-	var unit dbus.ObjectPath
+func (sysd *Systemd) GetUnit(name string) d.ObjectPath {
+	var unit d.ObjectPath
 	sysd.bus.Call("org.freedesktop.systemd1.Manager.GetUnit", 0, name).Store(&unit)
 	return unit
 }
 
-func (sysd *Systemd) GetUnitByControlGroup(cgroup string) dbus.ObjectPath {
-	var unit dbus.ObjectPath
+func (sysd *Systemd) GetUnitByControlGroup(cgroup string) d.ObjectPath {
+	var unit d.ObjectPath
 	sysd.bus.Call("org.freedesktop.systemd1.Manager.GetUnitByControlGroup", 0, cgroup).Store(&unit)
 	return unit
 }
 
-func (sysd *Systemd) GetUnitByInvocationID(invocationId []byte) dbus.ObjectPath {
-	var unit dbus.ObjectPath
+func (sysd *Systemd) GetUnitByInvocationID(invocationId []byte) d.ObjectPath {
+	var unit d.ObjectPath
 	sysd.bus.Call("org.freedesktop.systemd1.Manager.GetUnitByInvocationID", 0, invocationId).Store(&unit)
 	return unit
 }
 
-func (sysd *Systemd) GetUnitByPID(pid uint32) dbus.ObjectPath {
-	var unit dbus.ObjectPath
+func (sysd *Systemd) GetUnitByPID(pid uint32) d.ObjectPath {
+	var unit d.ObjectPath
 	sysd.bus.Call("org.freedesktop.systemd1.Manager.GetUnitByPID", 0, pid).Store(&unit)
 	return unit
 }
 
-func (sysd *Systemd) GetUnitByPIDFD(pidfd *os.File) dbus.ObjectPath {
-	var unit dbus.ObjectPath
+func (sysd *Systemd) GetUnitByPIDFD(pidfd *os.File) d.ObjectPath {
+	var unit d.ObjectPath
 	sysd.bus.Call("org.freedesktop.systemd1.Manager.GetUnitByPID", 0, pidfd).Store(&unit)
 	return unit
 }

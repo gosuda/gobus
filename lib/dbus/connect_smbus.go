@@ -1,4 +1,4 @@
-package dbusman
+package dbus
 
 import (
 	"github.com/godbus/dbus"
@@ -13,12 +13,10 @@ type Units []struct {
 }
 
 // Connect to System Bus
-func ConnectDBus() (*dbus.Conn, error) {
+func ConnectSystemBus() (*dbus.Conn, error) {
 	conn, err := dbus.SystemBus()
 	if err != nil {
 		return nil, err
 	}
 	return conn, err
 }
-
-

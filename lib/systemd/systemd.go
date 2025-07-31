@@ -1,8 +1,8 @@
 package systemd
+
 import (
 	"github.com/godbus/dbus"
 )
-
 
 type Systemd struct {
 	bus dbus.BusObject
@@ -14,3 +14,7 @@ func GetSystemd(conn *dbus.Conn) *Systemd {
 	daemon.bus = conn.Object("org.freedesktop.systemd1", "/org/freedesktop/systemd1")
 	return daemon
 }
+
+type Opt string
+
+// for optional args

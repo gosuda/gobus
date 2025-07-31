@@ -1,9 +1,10 @@
-package systemd
+package unit
 
 import (
 	"github.com/godbus/dbus"
-	_ "github.com/gosuda/gobus/lib/dbusman"
+	_ "github.com/gosuda/gobus/lib/dbus"
 )
+
 // This is a service unit of freedesktop
 type Unit struct {
 	Name        string
@@ -17,7 +18,3 @@ type Unit struct {
 	JobType     string
 	JobPath     dbus.ObjectPath
 }
-
-type Opt string
-
-// for optional args
