@@ -22,6 +22,12 @@ func (sysd *Systemd) ListUnitsByNames(names []string) []unit.Unit {
 	return units
 }
 
+func (sysd *Systemd) ListUnitsByPatterns(states []string, patterns []string) []unit.UnitStatus {
+	var unitStatus []unit.UnitStatus
+	sysd.bus.Call("org.freedesktop.systemd1.Manager.ListUnitsByPatterns", 0, states, patterns).Store(&unitStatus)
+	return unitStatus
+}
+
 // get a single unit by a name
 func (sysd *Systemd) GetUnit(name string) d.ObjectPath {
 	var unit d.ObjectPath

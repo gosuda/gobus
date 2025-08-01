@@ -18,3 +18,16 @@ type Unit struct {
 	JobType     string
 	JobPath     dbus.ObjectPath
 }
+
+type UnitStatus struct {
+	Name        string
+	Description string
+	LoadState   string
+	ActiveState string
+	SubState    string
+	Following   string
+	ObjectPath  dbus.ObjectPath
+	JobId       uint32
+	JobType     string
+	JobPath     dbus.ObjectPath
+}
