@@ -3,6 +3,8 @@
 .
 ├── README.md
 ├── TREE.md
+├── assets
+│   └── icon.png
 ├── example
 │   └── step-1
 │       ├── systemd-manager-jobs-basics
@@ -16,7 +18,6 @@
 │   ├── dbus
 │   │   └── connect_smbus.go
 │   └── systemd
-│       ├── getter.go
 │       ├── job
 │       │   └── job.go
 │       ├── job_controller.go
@@ -27,9 +28,10 @@
 │       ├── systemd_jobs.go
 │       ├── systemd_unit_test.go
 │       ├── systemd_units.go
+│       ├── systemd_units_getter.go
 │       └── unit
 │           └── unit.go
 └── treegen.sh
 
-11 directories, 19 files
+12 directories, 20 files
 ```
