@@ -1,5 +1,6 @@
 # Gobus: FreeDesktop DBus Wrapper for Golang
 ![Logo](./assets/icon.png)
+------
 Gobus is a simplified FreeDesktop DBus wrapper.
 It aims structured and easy framework with brief calls.
 
