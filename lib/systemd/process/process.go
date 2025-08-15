@@ -1,5 +1,14 @@
 package process
 
+// NewProcess is a constructor function
+func NewProcess(cgroup string, pid uint32, command string) Process {
+	return Process{
+		cgroup:  cgroup,
+		pid:     pid,
+		command: command,
+	}
+}
+
 func (p Process) GetCgroup() string {
 	return p.cgroup
 }

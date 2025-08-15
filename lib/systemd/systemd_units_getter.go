@@ -11,15 +11,15 @@ import (
 type SystemdUnitGetters interface {
 	// Functions should follow FreeDesktop functions' original names.
 	// These funtions are unit getters
-	ListUnitsByNames(names []string) []unit.Unit
-	ListUnits() []unit.Unit
-	ListUnitsByPatterns([]string, []string) []unit.UnitStatus
-	GetUnit(string) d.ObjectPath
-	GetUnitByControlGroup(string) d.ObjectPath
-	GetUnitByInvocationID([]byte) d.ObjectPath
-	GetUnitByPID(uint32) d.ObjectPath
-	GetUnitByPIDFD(*os.File) d.ObjectPath
-	GetUnitFileLinks(string, bool) []string
-	GetUnitFileState(string) string
-	GetUnitProcesses(string) []process.Process
+	ListUnitsByNames(names []string) ([]unit.Unit, error)
+	ListUnits() ([]unit.Unit, error)
+	ListUnitsByPatterns([]string, []string) ([]unit.UnitStatus, error)
+	GetUnit(string) (d.ObjectPath, error)
+	GetUnitByControlGroup(string) (d.ObjectPath, error)
+	GetUnitByInvocationID([]byte) (d.ObjectPath, error)
+	GetUnitByPID(uint32) (d.ObjectPath, error)
+	GetUnitByPIDFD(*os.File) (d.ObjectPath, string, []byte, error)
+	GetUnitFileLinks(string, bool) ([]string, error)
+	GetUnitFileState(string) (string, error)
+	GetUnitProcesses(string) ([]process.Process, error)
 }

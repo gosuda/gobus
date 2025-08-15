@@ -22,5 +22,10 @@ func main() {
 	for i, j := range affectedJobs {
 		log.Printf("Affected Job %d: %+v", i, j)
 	}
+    markedJobs := sysd.EnqueueMarkedJobs()
+    log.Println("Marked Jobs: ", len(markedJobs))
+    for _, m := range markedJobs {
+        log.Printf("Marked Job: %v\n", m)
+    }
 
 }
