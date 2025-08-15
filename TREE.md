@@ -8,8 +8,7 @@
 ├── example
 │   └── step-1
 │       ├── systemd-manager-jobs-basics
-│       │   ├── main.go
-│       │   └── systemd-manager-jobs-basics
+│       │   └── main.go
 │       └── systemd-manager-unit-basics
 │           └── main.go
 ├── go.mod
@@ -20,18 +19,21 @@
 │   └── systemd
 │       ├── job
 │       │   └── job.go
-│       ├── job_controller.go
+│       ├── object
+│       │   ├── object.go
+│       │   ├── object_get_props.go
+│       │   └── object_props_getter.go
 │       ├── process
 │       │   └── process.go
 │       ├── systemd.go
-│       ├── systemd_job_test.go
+│       ├── systemd_job_controller.go
 │       ├── systemd_jobs.go
-│       ├── systemd_unit_test.go
+│       ├── systemd_test.go
 │       ├── systemd_units.go
 │       ├── systemd_units_getter.go
 │       └── unit
 │           └── unit.go
 └── treegen.sh
 
-12 directories, 20 files
+13 directories, 21 files
 ```

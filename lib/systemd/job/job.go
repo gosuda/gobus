@@ -10,5 +10,4 @@ type Job struct {
 	UnitId    string
 	UnitPath  d.ObjectPath
 	JobType   string
-	JobStatus uint32
 }
