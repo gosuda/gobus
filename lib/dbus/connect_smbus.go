@@ -12,6 +12,8 @@ type Units []struct {
 	SubState    string
 }
 
+type Conn dbus.Conn
+
 // Connect to System Bus
 func ConnectSystemBus() (*dbus.Conn, error) {
 	conn, err := dbus.SystemBus()
