@@ -2,7 +2,8 @@ package systemd
 
 import (
 	"os"
-  	"os/exec"
+	"os/exec"
+
 	"golang.org/x/sys/unix"
 
 	"testing"
@@ -11,9 +12,11 @@ import (
 )
 
 var sysd *Systemd
+var err error
+const SIGTERM = 15
 
 func TestMain(m *testing.M) {
-	conn, err := dbus.ConnectSystemBus()
+    conn, err := dbus.ConnectSystemBus()
 	if err != nil {
 		os.Exit(1)
 	}
@@ -142,8 +145,39 @@ func TestGetUnitProcesses(t *testing.T) {
 	}
 }
 
+func TestSystemdStartUnit(t *testing.T) {
+    j, err := sysd.StartUnit("cups.service", "fail")
+    if err != nil {
+        t.Fatalf("Error on starting unit: (%v)", err)
+    }
+    t.Logf("Started unit: (%v)", j)
+}
+
+func TestSystemdStopUnit(t *testing.T) {
+    for {
+        units ,err := sysd.ListUnitsByNames([]string{"cups.service"})
+        if err != nil {
+            t.Fatalf("Failed to list units: cups.service not found. Error: (%v)", err)
+        }
+        if units[0].SubState == "running" {
+            break
+        }
+    }
+    j, err := sysd.StopUnit("cups.service", "fail") 
+    if err != nil {
+        t.Fatalf("Error on stopping unit: (%v)", err)
+    }
+    t.Logf("Stopped unit: (%v)", j)
+
+}
+
+func TestSystemdKillUnit(t *testing.T) {
+    sysd.KillUnit("cups.service", "main", SIGTERM)
+    
+}
+
 func TestSystemdJobControllers(t *testing.T) {
-	j, _, err := sysd.EnqueueUnitJob("cups.service", "start", "fail")
+	j, _, err := sysd.EnqueueUnitJob("cups.service", "start", "replace")
 	if err != nil {
 		t.Fatalf("Error starting a job: %v", err)
 	}
@@ -152,3 +186,5 @@ func TestSystemdJobControllers(t *testing.T) {
 		t.Fatalf("Error getting job after enqueue: %v", err)
 	}
 }
+
+

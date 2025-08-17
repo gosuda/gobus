@@ -17,7 +17,10 @@ func main() {
 	jobType := "start"
 	jobMode := "replace"
 
-	currentJob, affectedJobs := sysd.EnqueueUnitJob(jobName, jobType, jobMode)
+	currentJob, affectedJobs, err := sysd.EnqueueUnitJob(jobName, jobType, jobMode)
+    if err != nil {
+        log.Printf("Error on EnqueueUnitJob: (%v)\n", err)
+    }
 	log.Printf("Current Job: %+v", currentJob)
 	for i, j := range affectedJobs {
 		log.Printf("Affected Job %d: %+v", i, j)

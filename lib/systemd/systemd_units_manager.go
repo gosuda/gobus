@@ -23,3 +23,9 @@ type SystemdUnitGetters interface {
 	GetUnitFileState(string) (string, error)
 	GetUnitProcesses(string) ([]process.Process, error)
 }
+
+type SystemdUnitManager interface {
+    KillUnit(string, string, int32)
+    StartUnit(string, string) (d.ObjectPath, error)
+    StopUnit(string, string) (d.ObjectPath, error)
+}
