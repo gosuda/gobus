@@ -17,7 +17,15 @@
 ├── lib
 │   ├── dbus
 │   │   └── connect_smbus.go
-│   └── systemd
+│   ├── hostname
+│   │   └── hostname.go
+│   ├── locale
+│   │   └── locale.go
+│   ├── login
+│   │   └── login.go
+│   ├── machine
+│   │   └── machine.go
+│   ├── systemd
 │       ├── job
 │       │   └── job.go
 │       ├── object
@@ -35,7 +43,9 @@
 │       ├── systemd_units_manager.go
 │       └── unit
 │           └── unit.go
+│   └── timedate
+│       └── timedate.go
 └── treegen.sh
 
-13 directories, 23 files
+18 directories, 28 files
 ```
