@@ -26,6 +26,12 @@
 │   │   └── login.go
 │   ├── machine
 │   │   └── machine.go
+│   ├── networkmanager
+│   │   ├── connections.go
+│   │   ├── devices.go
+│   │   ├── dns.go
+│   │   ├── ipv.go
+│   │   └── settings.go
 │   ├── systemd
 │   │   ├── job
 │   │   │   └── job.go
@@ -48,5 +54,5 @@
 │       └── timedate.go
 └── treegen.sh
 
-18 directories, 29 files
+19 directories, 34 files
 ```
