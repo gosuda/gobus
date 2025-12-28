@@ -11,7 +11,7 @@ It aims structured and easy framework with brief calls.
 
 ## Rules
 
-* Follow FreeDesktop.org's naming convention for methods
+* Follow FreeDesktop.org's naming convention for methods if you can distinguish without modifying
 * Code should be concise
   * Readability over a performance
 * Each elements are indirectly accessed, by methods.
